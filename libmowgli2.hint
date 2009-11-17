@@ -1,0 +1,6 @@
+category: Libs
+requires: libgcc1
+external-source: libmowgli
+sdesc: "C extension library (runtime)"
+ldesc: "libmowgli is a class library containing performance and 
+usability oriented extensions to C."

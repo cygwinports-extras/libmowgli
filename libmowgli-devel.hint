@@ -1,0 +1,6 @@
+category: Libs
+requires: libmowgli2
+external-source: libmowgli
+sdesc: "C extension library (development)"
+ldesc: "libmowgli is a class library containing performance and 
+usability oriented extensions to C."

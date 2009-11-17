@@ -1,0 +1,26 @@
+--- origsrc/libmowgli-0.7.0/m4/buildsys.m4	2008-07-06 08:48:26.000000000 -0500
++++ src/libmowgli-0.7.0/m4/buildsys.m4	2009-11-16 14:55:34.700154400 -0600
+@@ -66,7 +66,22 @@ AC_DEFUN([BUILDSYS_SHARED_LIB], [
+ 			UNINSTALL_LIB='rm -f ${DESTDIR}${libdir}/$$i ${DESTDIR}${libdir}/$$i.${LIB_MAJOR}.${LIB_MINOR}'
+ 			CLEAN_LIB=''
+ 			;;
+-		*-*-cygwin | *-*-mingw32)
++		*-*-cygwin)
++			AC_MSG_RESULT(Cygwin)
++			LIB_CPPFLAGS='-DPIC -DDLL_EXPORT'
++			LIB_CFLAGS=''
++			LIB_LDFLAGS='-shared -Wl,--out-implib,$(LIB:cyg%${LIB_SUFFIX}=lib%.dll.a)'
++			LIB_PREFIX='cyg'
++			LIB_SUFFIX='-${LIB_MAJOR}.dll'
++			PLUGIN_CPPFLAGS=''
++			PLUGIN_CFLAGS=''
++			PLUGIN_LDFLAGS='-shared'
++			PLUGIN_SUFFIX='.dll'
++			INSTALL_LIB='${MKDIR_P} ${DESTDIR}${bindir} && ${INSTALL} -m 755 $$i ${DESTDIR}${bindir}/$$i && ${INSTALL} -m 755 $(LIB:cyg%${LIB_SUFFIX}=lib%.dll.a) ${DESTDIR}${libdir}/$(LIB:cyg%${LIB_SUFFIX}=lib%.dll.a)'
++			UNINSTALL_LIB='rm -f ${DESTDIR}${bindir}/$$i ${DESTDIR}${libdir}/$(LIB:cyg%${LIB_SUFFIX}=lib%.dll.a)'
++			CLEAN_LIB='$(LIB:cyg%${LIB_SUFFIX}=lib%.dll.a)'
++			;;
++		*-*-mingw32)
+ 			AC_MSG_RESULT(Win32)
+ 			LIB_CPPFLAGS='-DPIC'
+ 			LIB_CFLAGS=''

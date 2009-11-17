@@ -1,0 +1,4 @@
+category: Libs
+sdesc: "C extension library (sources)"
+ldesc: "libmowgli is a class library containing performance and 
+usability oriented extensions to C."
