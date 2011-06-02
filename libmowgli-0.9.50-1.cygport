@@ -1,9 +1,9 @@
 DESCRIPTION="C extension library"
 HOMEPAGE="http://audacious-media-player.org/"
-SRC_URI="http://distfiles.atheme.org/${P}.tbz2"
-PATCH_URI="0.7.0-buildsys.patch"
+SRC_URI="http://distfiles.atheme.org/${P}.tar.bz2"
+PATCH_URI="0.9.50-buildsys.patch"
 
-PKG_NAMES="${PN} ${PN}2 ${PN}-devel"
+PKG_NAMES="${PN}2 ${PN}-devel"
 libmowgli2_CONTENTS="usr/bin/cygmowgli-2.dll usr/share/doc/"
 libmowgli_devel_CONTENTS="usr/include/ usr/lib/"
 

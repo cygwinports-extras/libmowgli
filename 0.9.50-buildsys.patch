@@ -1,17 +1,18 @@
---- origsrc/libmowgli-0.7.0/m4/buildsys.m4	2008-07-06 08:48:26.000000000 -0500
-+++ src/libmowgli-0.7.0/m4/buildsys.m4	2009-11-16 14:55:34.700154400 -0600
-@@ -66,7 +66,22 @@ AC_DEFUN([BUILDSYS_SHARED_LIB], [
- 			UNINSTALL_LIB='rm -f ${DESTDIR}${libdir}/$$i ${DESTDIR}${libdir}/$$i.${LIB_MAJOR}.${LIB_MINOR}'
+--- origsrc/libmowgli-0.9.50/m4/buildsys.m4	2011-01-21 14:49:59.000000000 -0600
++++ src/libmowgli-0.9.50/m4/buildsys.m4	2011-06-02 00:23:32.267082500 -0500
+@@ -101,7 +101,23 @@ AC_DEFUN([BUILDSYS_SHARED_LIB], [
+ 			UNINSTALL_LIB='rm -f ${DESTDIR}${libdir}/$$i'
  			CLEAN_LIB=''
  			;;
--		*-*-cygwin | *-*-mingw32)
-+		*-*-cygwin)
+-		cygwin* | mingw*)
++		cygwin*)
 +			AC_MSG_RESULT(Cygwin)
-+			LIB_CPPFLAGS='-DPIC -DDLL_EXPORT'
++			LIB_CPPFLAGS='-DPIC'
 +			LIB_CFLAGS=''
 +			LIB_LDFLAGS='-shared -Wl,--out-implib,$(LIB:cyg%${LIB_SUFFIX}=lib%.dll.a)'
 +			LIB_PREFIX='cyg'
 +			LIB_SUFFIX='-${LIB_MAJOR}.dll'
++			LDFLAGS_RPATH=''
 +			PLUGIN_CPPFLAGS=''
 +			PLUGIN_CFLAGS=''
 +			PLUGIN_LDFLAGS='-shared'
@@ -20,7 +21,7 @@
 +			UNINSTALL_LIB='rm -f ${DESTDIR}${bindir}/$$i ${DESTDIR}${libdir}/$(LIB:cyg%${LIB_SUFFIX}=lib%.dll.a)'
 +			CLEAN_LIB='$(LIB:cyg%${LIB_SUFFIX}=lib%.dll.a)'
 +			;;
-+		*-*-mingw32)
++		mingw*)
  			AC_MSG_RESULT(Win32)
  			LIB_CPPFLAGS='-DPIC'
  			LIB_CFLAGS=''
